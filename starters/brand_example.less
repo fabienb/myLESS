@@ -1,0 +1,92 @@
+// JPM BRAND
+//---------------------------------------------------------------------------------
+// TABLE OF CONTENTS
+//
+// 1. Colours
+// 2. Typography
+// 3. Fun
+//
+//--------------------------------------------------------------------------------
+
+//---------------------------------------------
+// COLOURS
+// reference (do not use these straight away in the CSS, check the next list):
+@c-jaguar: 			#2B2B2B;
+@c-steel:				#666;
+@c-dove-grey:		#6F6F6F;
+@c-silver-chalice:		#ADADAD;
+@c-iron:				#CCC;
+@c-dirty-white:		#E4E4E4;
+@c-black-haze:		#F7F7F7;
+@c-white:				#FFF;
+@c-tangerine:			#ED8B00;
+@c-glaucous:			#5E8AB4;
+@c-brown-bramble:	#543017;
+@c-mystic:			#DFE8F0;
+@c-green-leaf:		#517016;
+@c-thunderbird:		#CC2519;
+
+// in use:
+@c-text: 				@c-jaguar;
+@c-text-lighter: 		@c-dove-grey;
+@c-grey_dark: 		@c-steel;					// dark grey background, footer
+@c-border:			@c-iron; 					// borders
+@c-bg-table:			@c-dirty-white;			// panels background, zebra table
+@c-bg-table-alt:		@c-black-haze; 			// zebra table
+@c-bg: 				@c-white;					// as variable for quick change
+@c-orange: 			@c-tangerine;
+@c-blue: 				@c-glaucous;
+@c-lightblue: 			@c-mystic;				// table footer
+@c-brown: 			@c-brown-bramble;
+@c-green: 			@c-green-leaf;
+@c-red: 				@c-thunderbird;
+
+
+// RGBA Mixin
+.rgbaColorIn(@color, @opacity: 1) {
+	@result: rgba(red(@color), green(@color), blue(@color), @opacity);
+}
+// alternate method: use the fade function
+// example:
+// background-color: fade(@c-grey_dark, 50%);
+
+
+
+
+//---------------------------------------------
+// TYPOGRAPHY
+// .eot			IE9 Compact Modes
+// .eot?#iefix	IE6-IE8
+// .woff2		Super Modern Browsers (if available)
+// .woff			Modern Browsers
+// .ttf			Safari, Android, iOS
+// .svg			Legacy iOS, Print service
+
+@f-arial: 		~"Arial, Helvetica, sans-serif";
+@f-ar: 			~"'AmplitudeRegular'";
+@f-am: 		~"'AmplitudeMedium'";
+@f-al: 			~"'AmplitudeLight'";
+@f-fa: 			~"'FontAwesome'" @i;
+@f-im: 			~"'IcoMoon'" @i;
+@f-default: 	@f-arial;
+@basefont: 	16px;
+.font(@f-family: @f-default, @f-weight: 400, @f-style: ~"normal") {
+	font-family: 	@f-family;
+	font-weight: 	@f-weight;
+	font-style: 		@f-style;
+}
+
+a,
+*:focus {
+	outline: none;
+}
+
+
+
+
+//---------------------------------------------
+// HELPERS
+@tea:  				#7EA;
+@coffee:  			#C0FFEE;
+// self-awareness
+@whoami: 		#BADA55;
