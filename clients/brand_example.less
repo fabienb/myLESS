@@ -10,37 +10,50 @@
 
 //---------------------------------------------
 // COLOURS
-// reference (do not use these straight away in the CSS, check the next list):
-@c-jaguar: 			#2B2B2B;
-@c-steel:				#666;
-@c-dove-grey:		#6F6F6F;
+//
+// Reference (do not use these straight away in the CSS, check point 3 for the variables to use):
+// 1. Kurtosys Logo colours
+@c-ksys-blue: 				#286BA6;
+@c-ksys-lightblue: 		#38A1CE;
+@c-ksys-green: 				#0F9748;
+@c-ksys-red: 					#D7272D;
+// 2. More colours
+@c-jaguar: 						#2B2B2B;
+@c-steel:							#666;
+@c-dove-grey:					#6F6F6F;
 @c-silver-chalice:		#ADADAD;
-@c-iron:				#CCC;
-@c-dirty-white:		#E4E4E4;
-@c-black-haze:		#F7F7F7;
-@c-white:				#FFF;
-@c-tangerine:			#ED8B00;
-@c-glaucous:			#5E8AB4;
-@c-brown-bramble:	#543017;
-@c-mystic:			#DFE8F0;
-@c-green-leaf:		#517016;
-@c-thunderbird:		#CC2519;
-
-// in use:
-@c-text: 				@c-jaguar;
-@c-text-lighter: 		@c-dove-grey;
-@c-grey_dark: 		@c-steel;					// dark grey background, footer
-@c-border:			@c-iron; 					// borders
-@c-bg-table:			@c-dirty-white;			// panels background, zebra table
-@c-bg-table-alt:		@c-black-haze; 			// zebra table
-@c-bg: 				@c-white;					// as variable for quick change
-@c-orange: 			@c-tangerine;
-@c-blue: 				@c-glaucous;
-@c-lightblue: 			@c-mystic;				// table footer
-@c-brown: 			@c-brown-bramble;
-@c-green: 			@c-green-leaf;
-@c-red: 				@c-thunderbird;
-
+@c-iron:							#CCC;
+@c-dirty-white:				#E4E4E4;
+@c-black-haze:				#F7F7F7;
+@c-white:							#FFF;
+@c-tangerine:					#ED8B00;
+@c-mystic:						#DFE8F0;
+// 2.1 Birdfolio Palette
+@c-elephant: 					#2A3A42;
+@c-flord:							#3E5765;
+@c-beau-blue: 				#BCD4DF;
+@c-dirty-white: 			#EFEFEF;
+@c-int-orange: 				@c-accent;
+// 2.2 Material Design Palette
+@c-primary-dark: 			#455A64;
+@c-primary: 					#607D8B;
+@c-primary-light: 		#CFD8DC;
+@c-accent: 						#FF5722;
+@c-text: 							#212121;
+@c-text-light: 				#727272;
+@c-divider: 					#B6B6B6;
+// 3. In use:
+@c-text-lighter: 			@c-dove-grey;
+@c-grey_dark: 				@c-steel;					// dark grey background, footer
+@c-border:						@c-divider; 			// borders
+@c-bg-table:					@c-dirty-white;		// panels background, zebra table
+@c-bg-table-alt:			@c-black-haze; 		// zebra table alternative
+@c-bg: 								@c-white;
+@c-orange: 						@c-tangerine;
+@c-blue: 							@c-ksys-blue;
+@c-lightblue: 				@c-ksys-lightblue;
+@c-green: 						@c-ksys-green;
+@c-red: 							@c-ksys-red;
 
 // RGBA Mixin
 .rgbaColorIn(@color, @opacity: 1) {
@@ -50,43 +63,54 @@
 // example:
 // background-color: fade(@c-grey_dark, 50%);
 
+// SVG Colouring
+.svgcolor(@fill-color, @stroke-color) {
+	[fill]:not([fill="none"]) {
+		fill: @fill-color;
+	}
+	[stroke]:not([stroke="none"]) {
+		stroke: @stroke-color;
+	}
+}
+
 
 
 
 //---------------------------------------------
 // TYPOGRAPHY
-// .eot			IE9 Compact Modes
-// .eot?#iefix	IE6-IE8
-// .woff2		Super Modern Browsers (if available)
-// .woff			Modern Browsers
-// .ttf			Safari, Android, iOS
-// .svg			Legacy iOS, Print service
+// .eot							IE9 Compact Modes
+// .eot?#iefix			IE6-IE8
+// .woff2						Super Modern Browsers (if available)
+// .woff						Modern Browsers
+// .ttf							Safari, Android, iOS
+// .svg							Legacy iOS, Print service
 
-@f-arial: 		~"Arial, Helvetica, sans-serif";
-@f-ar: 			~"'AmplitudeRegular'";
-@f-am: 		~"'AmplitudeMedium'";
-@f-al: 			~"'AmplitudeLight'";
-@f-fa: 			~"'FontAwesome'" @i;
-@f-im: 			~"'IcoMoon'" @i;
-@f-default: 	@f-arial;
-@basefont: 	16px;
-.font(@f-family: @f-default, @f-weight: 400, @f-style: ~"normal") {
-	font-family: 	@f-family;
-	font-weight: 	@f-weight;
-	font-style: 		@f-style;
+// Lato, from Google Fonts
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+// Font Awesome, for the icons
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css);
+
+@f-arial: 					~"Arial, Helvetica, sans-serif";
+@f-lato: 						~"'Lato', sans-serif";
+@f-fa: 							~"'FontAwesome'" @i;
+@f-default: 				@f-lato;
+@basefont: 					16px;
+.font(@f-family: 		@f-default, @f-weight: 400, @f-style: ~"normal") {
+	font-family: 			@f-family;
+	font-weight: 			@f-weight;
+	font-style: 			@f-style;
 }
 
 a,
-*:focus {
-	outline: none;
-}
-
+*:focus {	outline: none; }
 
 
 
 //---------------------------------------------
 // HELPERS
-@tea:  				#7EA;
-@coffee:  			#C0FFEE;
-// self-awareness
+@tea:  			#7EA;
+@coffee:  	#C0FFEE;
+// ^ interestingly, they're both 'watery' colours
+
+// SELF-AWARENESS
 @whoami: 		#BADA55;

@@ -401,28 +401,28 @@
 // Placeholder mixin
 // you just need to specify a color and either bold or italic
 // like input { .placeholder(false, bold) }
-.colormixin (@color: false) when not (@color=false) {color: @color;}
-.stylemixin (@style: false) when not (@style=false) {
+.placeholdercolor (@color: false) when not (@color=false) {color: @color;}
+.placeholderstyle (@style: false) when not (@style=false) {
 	.style (@style) when (@style=italic) {font-style: @style;}
 	.style (@style) when (@style=bold) {font-weight: @style;}
 	.style (@style);
 }
 .placeholder(@color: false, @style: false) {
 	&::-webkit-input-placeholder {
-		.colormixin(@color);
-		.stylemixin(@style);
+		.placeholdercolor(@color);
+		.placeholderstyle(@style);
 	}
 	&:-moz-placeholder {
-		.colormixin(@color);
-		.stylemixin(@style);
+		.placeholdercolor(@color);
+		.placeholderstyle(@style);
 	}
 	&::-moz-placeholder {
-		.colormixin(@color);
-		.stylemixin(@style);
+		.placeholdercolor(@color);
+		.placeholderstyle(@style);
 	}
 	&:-ms-input-placeholder {
-		.colormixin(@color);
-		.stylemixin(@style);
+		.placeholdercolor(@color);
+		.placeholderstyle(@style);
 	}
 }
 
