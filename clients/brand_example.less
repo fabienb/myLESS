@@ -55,25 +55,6 @@
 @c-green: 						@c-ksys-green;
 @c-red: 							@c-ksys-red;
 
-// RGBA Mixin
-.rgbaColorIn(@color, @opacity: 1) {
-	@result: rgba(red(@color), green(@color), blue(@color), @opacity);
-}
-// alternate method: use the fade function
-// example:
-// background-color: fade(@c-grey_dark, 50%);
-
-// SVG Colouring
-.svgcolor(@fill-color, @stroke-color) {
-	[fill]:not([fill="none"]) {
-		fill: @fill-color;
-	}
-	[stroke]:not([stroke="none"]) {
-		stroke: @stroke-color;
-	}
-}
-
-
 
 
 //---------------------------------------------
@@ -88,21 +69,73 @@
 // Lato, from Google Fonts
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 // Font Awesome, for the icons
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css);
 
+@f-fallback: 				~"Arial, Helvetica, -apple-system, sans-serif";
 @f-arial: 					~"Arial, Helvetica, sans-serif";
 @f-lato: 						~"'Lato', sans-serif";
-@f-fa: 							~"'FontAwesome'" @i;
+// -- Icon Fonts
+@f-fa: 			~"'FontAwesome'" @i;
+// -- Default font stack
+@f-default: 				~"@{f-arial}, @{f-fallback}";
+@f-default-bold: 		~"@{f-arial-bold-if-available}";
+@f-default-light: 	~"@{f-arial-light-if-available}";
 @f-default: 				@f-lato;
-@basefont: 					16px;
-.font(@f-family: 		@f-default, @f-weight: 400, @f-style: ~"normal") {
-	font-family: 			@f-family;
-	font-weight: 			@f-weight;
-	font-style: 			@f-style;
+.font(@f-family: @f-default, @f-weight: 400, @f-lineheight: 1.33, @f-style: ~"normal") {
+	font-family: 	@f-family;
+	font-weight: 	@f-weight;
+	font-style: 	@f-style;
+	line-height: 	@f-lineheight;
 }
 
+
+
+//------------------------------------------------------------------------------------
+// TYPOGRAPHY MIXINS
+@basefont: 	16px; // Base font size
+@baseline: 	20px; // Base line height
+@gutter: 		20px; // Gutter
+
+
+
+//------------------------------------------------------------------------------------
+// GENERAL TYPOGRAPHY
+body {
+	.font;
+}
+// Headings
+h1 {
+	.font(@f-default-bold, 400, 1.143); // Bold
+	font-size: round(@basefont * 2.25); // 36px
+}
+h2 {
+	.font(@f-default-bold, 400, 1.143); // Bold
+	font-size: round(@basefont * 2); 		// 32px
+}
+h3 {
+	.font(@f-default-bold, 400, 1.1); // Bold
+	font-size: round(@basefont * 1.5); // 24px
+}
+h4 {
+	.font(@f-default-bold, 400, 1.1); // Bold
+	font-size: round(@basefont * 1.125); // 18px
+}
+// Paragraphs
+p {
+	.font(@f-default);
+}
+a {
+	color: @c-link;
+}
+strong, b {
+	.font(@f-default-bold, 400); // Bold
+}
+// Links
 a,
-*:focus {	outline: none; }
+*:focus {
+	outline: none;
+	// must specify an alternative style
+}
 
 
 
