@@ -1,0 +1,118 @@
+//------------------------------------------------------------------------------------
+// COLUMNS-SPECIFIC MIXINS
+
+
+
+//------------------------------------------------------------------------------------
+// Columns
+.ksw__columns {
+	width: @full;
+}
+
+
+
+// Cards
+.ksw__cards {
+	vertical-align: top;
+	.clearfix;
+	h2 {
+		color: @c-primary-dark;
+		font-size: round(@basefont * 1.125); // 18px
+		text-transform: uppercase;
+		padding-top: @gutter / 2;
+		border-top: 3px solid currentColor;
+	}
+	h3 {
+		color: @c-primary-dark;
+		font-size: @basefont;
+		text-transform: uppercase;
+		margin: 0;
+		+ p {
+			margin-top: 0;
+		}
+	}
+}
+
+.ksw__card {
+	font-size: @basefont;
+	&.is-date-selector {
+		text-align: center;
+	}
+}
+
+
+
+// position
+.ksw__card--left {
+	float: left;
+	padding-right: 2%;
+	& + & {
+		margin-top: @gutter;
+	}
+	@media @size-M {
+		padding-right: 0;
+	}
+}
+.ksw__card--middle {
+	float: left;
+	padding-left: 1%;
+	padding-right: 1%;
+	& + & {
+		margin-top: @gutter;
+	}
+	@media @size-S {
+		padding-right: 0;
+	}
+}
+.ksw__card--right {
+	float: right;
+	padding-left: 2%;
+	& + & {
+		margin-top: @gutter;
+	}
+	@media @size-S {
+		padding-left: 0;
+	}
+}
+// size
+.ksw__card--full {
+	float: left;
+	width: @full;
+}
+.ksw__card--half {
+	width: (@full / 2);
+	@media @size-S {
+		width: @full;
+	}
+}
+.ksw__card--1-3 {
+	width: round(@full / 3);
+	@media @size-S {
+		width: @full;
+	}
+}
+.ksw__card--2-3 {
+	width: round((@full / 3) * 2);
+	@media @size-S {
+		width: @full;
+	}
+}
+
+
+
+//------------------------------------------------------------------------------------
+// Customisation
+.ksw__card--keypoints {}
+.ksw__card--portfoliomanager {}
+.ksw__card--distribution {}
+.ksw__card--c-perfchart {}
+.ksw__card--c-perftable {}
+.ksw__card--d-perftable {}
+.ksw__card--allocation-geo {}
+.ksw__card--allocation-sec {}
+.ksw__card--allocation-dist {}
+.ksw__card--allocation-bond {}
+.ksw__card--allocation-nav {}
+.ksw__card--allocation-stats {}
+.ksw__card--allocation-add {}
+.ksw__card--commentary {}

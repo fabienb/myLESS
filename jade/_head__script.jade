@@ -1,0 +1,35 @@
+script.
+	// set useful attributes to html
+	var b = document.documentElement;
+	b.setAttribute('data-useragent', navigator.userAgent);
+	b.setAttribute('data-platform', navigator.platform );
+	b.className += ((!!('ontouchstart' in window) || !!('onmsgesturechange' in window))?'ksys-touch':'');
+	//- Font Face Observer
+	// SINGLE FONT:
+	//- var observer = new FontFaceObserver('ProximaNovaRegular', {
+	//- 	weight: 400
+	//- });
+	//- observer.check().then(function () {
+	//- 	document.documentElement.classList.add('webfont-loaded');
+	//- }, function () {
+	//- 	console.info('Web font could not be loaded in time. Falling back to system fonts.');
+	//- });
+	// MULTIPLE FONTS:
+	var fontObservers = [];
+	var fontFamilies = {
+		'Calibre-Regular': [{weight: 400}],
+		'Calibre-Bold': [{weight: 400}],
+		'Calibre-SemiBold': [{weight: 400}],
+		'Calibre-Light': [{weight: 400}]
+		'Calibre-Thin': [{weight: 400}]
+	}
+	Object.keys(fontFamilies).forEach(function(family) {
+		fontObservers.push(fontFamilies[family].map(function(config) {
+			return new FontFaceObserver(family, config).check()
+		}));
+	});
+	Promise.all(fontObservers).then(function() {
+		document.documentElement.classList.add('webfont-loaded');
+	}, function() {
+		console.info('Web fonts could not be loaded in time. Falling back to system fonts.');
+	});

@@ -1,0 +1,67 @@
+// BUTTONS (FUND PAGE)
+//------------------------------------------------------------------------------------
+// BUTTONS-SPECIFIC MIXINS
+
+
+
+//------------------------------------------------------------------------------------
+// BUTTONS STYLE
+
+// Default
+[ng-click] {cursor: pointer;}
+
+.ksw__button {
+	.font(@f-default-bold);
+	font-size: round(@basefont * .9);
+	text-decoration: none;
+	white-space: nowrap;
+	// padding: round((@gutter / 4) + 3) round(@gutter / 2) round((@gutter / 4) - 3) round(@gutter / 2);
+	// ^ because of Calibre font line spacing issues :(
+	padding: round(@gutter / 3) round(@gutter / 2);
+	border: none;
+	cursor: pointer;
+	i {
+		margin-right: round(@gutter / 4);
+	}
+}
+
+
+
+// Customised
+.ksw__button--action {
+	background-color: @c-accent;
+	color: @c-white;
+	text-transform: uppercase;
+	&:hover {
+		background-color: darken(@c-accent, 5%);
+	}
+}
+
+.ksw__button--ghost {
+	background-color: transparent;
+	color: @c-accent;
+	text-transform: uppercase;
+	border: 1px solid @c-accent;
+	.transition(300ms);
+	&:hover {
+		background-color: @c-accent;
+		color: @c-white;
+	}
+}
+
+.ksw__button--search {
+	text-transform: uppercase @i;
+	// padding: round((@gutter / 4) + 3) @gutter round((@gutter / 4) - 3) @gutter;
+	// ^ because of Calibre font line spacing issues :(
+	padding: round(@gutter / 4) @gutter;
+}
+
+.ksw__button--goto {
+	background-color: @c-accent;
+	color: @c-white;
+	padding: .75em 1em;
+	.depth--shadow(1);
+	&:hover {
+		background-color: darken(@c-accent, 10%);
+	}
+}

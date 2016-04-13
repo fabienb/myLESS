@@ -2,10 +2,10 @@
 // -- DESKTOP
 @largescreen: ~"only screen and (min-width: 1824px)";
 @bigdesktop: ~"only screen and (min-width: 1224px)";
-@desktop: ~"only screen and (min-width: 960px)";
-@belowdesktop: ~"only screen and (max-width: 959px)";
-@smalldesktoplaptop: ~"only screen and (max-width: 799px)"; // was 767
-@tinydesktoplaptop: ~"only screen and (max-width: 650px)";
+@desktop: ~"only screen and (min-width: 960px)"; // was 980
+@belowdesktop: ~"only screen and (max-width: 959px)"; // was 979
+@smalldesktoplaptop: ~"only screen and (max-width: 890px)"; // was 767
+@tinydesktoplaptop: ~"only screen and (max-width: 720px)"; // was 650
 @ridiculousdesktoplaptop: ~"only screen and (max-width: 479px)";
 // -- TABLET
 @ipad: ~"only screen and (min-device-width: 768px) and (max-device-width: 1024px)";
@@ -22,6 +22,20 @@
 // -- RETINA DISPLAY
 @retina: ~"only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi)";
 @retinamacbook: ~"only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1300px), only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 1300px), only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 1300px), only screen and (min-device-pixel-ratio: 2) and (min-width: 1300px), only screen and (min-resolution: 192dpi) and (min-width: 1300px), only screen and (min-resolution: 2dppx) and (min-width: 1300px)";
+// -- Davy breakpoints, as per www.davyassetmanagement.com
+// @size-davy-01: ~"only screen and (max-width: 320px)";
+// @size-davy-02: ~"only screen and (max-width: 400px)";
+// @size-davy-03: ~"only screen and (max-width: 480px)";
+// @size-davy-04: ~"only screen and (max-width: 530px)";
+// @size-davy-05: ~"only screen and (max-width: 600px)";
+// @size-davy-06: ~"only screen and (max-width: 640px)";
+// @size-davy-07: ~"only screen and (max-width: 699px)";
+@size-davy-08: ~"only screen and (max-width: 720px)"; // left menu disappears here, available width: 510px
+@size-davy-09: ~"only screen and (max-width: 768px)";
+@size-davy-10: ~"only screen and (max-width: 800px)";
+// @size-davy-11: ~"only screen and (min-width: 720px) and (max-width: 740px)";
+@size-davy-12: ~"only screen and (min-width: 800px) and (max-width: 960px)";
+// @size-davy-13: ~"only screen and (min-width: 600px)";
 // -- QUICK SELECTORS, FOR EASY CHANGE
 @size-XXS: 	@smartphoneportrait;
 @size-XS: 	@ridiculousdesktoplaptop;
@@ -121,6 +135,7 @@
 	-khtml-opacity: 		@opacity;
 	-webkit-opacity: 		@opacity;
 	opacity: 						@opacity;
+
 	@opperc: 						@opacity * 100;
 	-ms-filter: 				~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
 	filter: 						~"alpha(opacity=@{opperc})";
@@ -427,6 +442,23 @@
 
 
 //------------------------------------------------------------------------------------
+// CSS Gradient
+// http://webdesign.tutsplus.com/tutorials/making-gradients-easier-with-less-mixins--cms-24072
+.gradient(@type; @colors; @dir: 0deg; @prefixes: webkit, moz, ms, o; @index: length(@prefixes)) when (@index > 0) {
+	.gradient(@type; @colors; @dir; @prefixes; (@index - 1));
+
+	@prefix  : extract(@prefixes, @index);
+	@dir-old : 90 - (@dir);
+
+	background-image: ~"-@{prefix}-@{type}-gradient(@{dir-old}, @{colors})";
+	& when (@index = length(@prefixes)) {
+		background-image: ~"@{type}-gradient(@{dir}, @{colors})";
+	}
+}
+
+
+
+//------------------------------------------------------------------------------------
 // Reset filters for IE
 // Useful for when you want to remove a gradient from an element.
 .reset-filter() {
@@ -472,7 +504,6 @@
 // Quantity queries mixins
 // Github: https://github.com/adjohnson916/quantity-queries.less
 // Article: http://alistapart.com/article/quantity-queries-for-css
-//------------------------------------------------------------------------------------
 ._build-quantity-selector(@selector-append, @selector-sibling) {
 	&@{selector-append},
 	&@{selector-append} ~ @{selector-sibling} {
@@ -546,7 +577,7 @@
 		box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 	}
 }
-.text--shadow(@level: 1) {
+.text-depth--shadow(@level: 1) {
 	& when (@level = 0) {
 		text-shadow: none;
 	}

@@ -1,0 +1,39 @@
+//------------------------------------------------------------------------------------
+// supported version of Flexbox:
+// display: -webkit-box; (display: flex;)
+// -webkit-box-orient: horizontal; (flex-direction: row;)
+// -webkit-box-orient: vertical; (flex-direction: column;)
+// -webkit-box-flex: 1; (flex: 1;)
+
+
+
+//------------------------------------------------------------------------------------
+// GRID-SPECIFIC MIXINS
+@full: 				100%;
+@gutter: 			20px;
+
+
+
+//------------------------------------------------------------------------------------
+.ng-hide,
+[ng-cloak] {
+	display: none !important;
+}
+.ng-show {
+	display: block !important;
+}
+
+
+
+.ksys-widget {
+	.font;
+	.boxsizing;
+	*,
+	*:before,
+	*:after {
+		.boxsizing;
+	}
+}
+.ksw-explorer-wrapper {
+	.clearfix;
+}

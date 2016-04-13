@@ -1,0 +1,298 @@
+// ICONS (FUND PAGE)
+//------------------------------------------------------------------------------------
+// ICONS-SPECIFIC MIXINS
+
+
+
+//------------------------------------------------------------------------------------
+// ICONS STYLE
+i.is-icon {font-style: normal;}
+
+
+
+// .icon-change-up {color: @c-default-green;}
+// .icon-change-down {color: @c-default-red;}
+
+
+
+//---------------------------------------
+// Social Media
+svg#ks-icon-linkedin {
+	.ks-icon-linkedin-circle {
+		// fill: #0077b5;
+		fill: @c-primary-dark;
+	}
+	.ks-icon-linkedin-logo {
+		font-family: "FontAwesome";
+		font-size: 24px;
+		fill: @c-white;
+	}
+	.ksys-button__share & {
+		width: 36px;
+		height: 36px;
+	}
+}
+svg#ks-icon-facebook {
+	.ks-icon-facebook-circle {
+		// fill: #3b5998;
+		fill: @c-primary-dark;
+	}
+	.ks-icon-facebook-logo {
+		font-family: "FontAwesome";
+		font-size: 24px;
+		fill: @c-white;
+	}
+	.ksys-button__share & {
+		width: 36px;
+		height: 36px;
+	}
+}
+svg#ks-icon-twitter {
+	.ks-icon-twitter-circle {
+		// fill: #55acee;
+		fill: @c-primary-dark;
+	}
+	.ks-icon-twitter-logo {
+		font-family: "FontAwesome";
+		font-size: 21px;
+		fill: @c-white;
+	}
+	.ksys-button__share & {
+		width: 36px;
+		height: 36px;
+	}
+}
+svg#ks-icon-googleplus {
+	.ks-icon-googleplus-circle {
+		// fill: #dc4e41;
+		fill: @c-primary-dark;
+	}
+	.ks-icon-googleplus-logo {
+		font-family: "FontAwesome";
+		font-size: 20px;
+		fill: @c-white;
+	}
+	.ksys-button__share & {
+		width: 36px;
+		height: 36px;
+	}
+}
+svg#ks-icon-print {
+	.ks-icon-print-circle {
+		// fill: #9b9b9b;
+		fill: @c-primary-dark;
+	}
+	.ks-icon-print-logo {
+		font-family: "FontAwesome";
+		font-size: 20px;
+		fill: @c-white;
+	}
+	.ksys-button__share & {
+		width: 36px;
+		height: 36px;
+	}
+}
+
+
+
+
+//---------------------------------------
+// Document
+svg#ks-icon-file {
+	height: 18px;
+	.ks-icon-file-page {
+		stroke: @c-link;
+		stroke-width: 1;
+		fill: @c-link;
+	}
+	.ks-icon-file-curl {
+		fill: lighten(@c-link, 5%);
+	}
+}
+
+svg#ks-icon-file-pdf {
+	.ksw__fe-cardview--documents & {
+		.translateY(3px);
+	}
+}
+
+
+
+//---------------------------------------
+// Morningstar Year Rating
+.ksw__awards--item-mstar {
+	i {
+		.relative;
+		.inline-block;
+	}
+}
+svg#ks-icon-mstar-year {
+	width: 138px;
+	height: 146px;
+	.ks-icon-mstar-year--borders,
+	.ks-icon-mstar-year--stars,
+	.ks-icon-mstar-year--logo,
+	.ks-icon-mstar-year--tm,
+	.ks-icon-mstar-year--mrating,
+	.ks-icon-mstar-year--years {
+		fill: @c-mstar-red;
+	}
+	.mstar-1,
+	.mstar-2,
+	.mstar-3,
+	.mstar-4,
+	.mstar-5 {
+		fill: none;
+	}
+	// .ks-icon-mstar-year--years {
+	// 	font-family: 'UniversLTD', 'ITC Franklin Gothic for Ameriprise', 'Lucida Grande', 'Arial Narrow', Arial, Helvetica, -apple-system, sans-serif;
+	// 	font-size: 14;
+	// 	font-weight: 300;
+	// 	font-style: condensed;
+	// }
+}
+.is-mstar-rated1 {
+	svg#ks-icon-mstar-year {
+		.mstar-1 {
+			fill: @c-mstar-red;
+		}
+	}
+}
+.is-mstar-rated2 {
+	svg#ks-icon-mstar-year {
+		.mstar-1, .mstar-2 {
+			fill: @c-mstar-red;
+		}
+	}
+}
+.is-mstar-rated3 {
+	svg#ks-icon-mstar-year {
+		.mstar-1, .mstar-2, .mstar-3 {
+			fill: @c-mstar-red;
+		}
+	}
+}
+.is-mstar-rated4 {
+	svg#ks-icon-mstar-year {
+		.mstar-1, .mstar-2, .mstar-3, .mstar-4 {
+			fill: @c-mstar-red;
+		}
+	}
+}
+.is-mstar-rated5 {
+	svg#ks-icon-mstar-year {
+		.mstar-1, .mstar-2, .mstar-3, .mstar-4, .mstar-5 {
+			fill: @c-mstar-red;
+		}
+	}
+}
+.is-mstar-1y,
+.is-mstar-3y,
+.is-mstar-5y,
+.is-mstar-10y,
+.is-mstar-All {
+	&:after {
+		.absolute;
+		content: "";
+		top: 	40px;
+		left: -1px;
+		color: @c-mstar-red;
+		font-family: 'UniversLTD', 'ITC Franklin Gothic for Ameriprise', 'Lucida Grande', 'Arial Narrow', Arial, Helvetica, -apple-system, sans-serif;
+		font-size: 14;
+		font-weight: 300;
+		font-style: condensed;
+		.inline-block;
+	}
+}
+.is-mstar-1y {
+	&:after {
+		content: "1 Year";
+	}
+}
+.is-mstar-3y {
+	&:after {
+		content: "3 Year";
+	}
+}
+.is-mstar-5y {
+	&:after {
+		content: "5 Year";
+	}
+}
+.is-mstar-10y {
+	&:after {
+		content: "10 Year";
+	}
+}
+.is-mstar-All {
+	&:after {
+		content: "Overall";
+	}
+}
+
+
+
+
+//---------------------------------------
+// Morninstar star
+svg#ks-icon-mstar-star {
+	width: 18px;
+	height: 18px;
+}
+.ksw-filters-vt__filter-list--item {
+	i.is-icon {
+		+ i.is-icon {
+			margin-left: -(@gutter / 4);
+		}
+		svg#ks-icon-mstar-star {
+			.translateY(4px);
+		}
+	}
+}
+.ksw-explorer-view {
+	i.is-icon {
+		.inline-block;
+		.translateY(2px);
+		+ i.is-icon {
+			margin-left: -(round(@gutter / 6));
+		}
+	}
+}
+.ksw__table--finder-card {
+	svg#ks-icon-mstar-star {
+		width: 15px;
+		height: 13px;
+		.translateY(-2px);
+	}
+}
+.ksw__table--finder {
+	svg#ks-icon-mstar-star {
+		width: 14px;
+		height: 14px;
+		.translateY(0px);
+	}
+}
+
+
+
+//---------------------------------------
+// Citywire rating
+svg#ks-rating-citywire {
+	width: 166px;
+	height: 36px;
+	.citywire-rating__bg-right {
+		fill: #c43361;
+	}
+	.citywire-rating__bg-left {
+		fill: #231f33;
+	}
+	.citywire-rating__bg-name {
+		fill: #fff;
+	}
+	.citywire-rating__rated {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		fill: #fff;
+	}
+}

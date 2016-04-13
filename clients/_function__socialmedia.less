@@ -1,0 +1,57 @@
+//------------------------------------------------------------------------------------
+// SOCIAL MEDIA BUTTONS
+//------------------------------------------------------------------------------------
+
+
+
+.ksys-social {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	.boxsizing;
+	.clearfix;
+
+	@media @size-L {
+		.translateY(5px);
+	}
+}
+.ksys-button__share {
+	.left;
+	.relative;
+	// background-color: @c-primary-light;
+	width: 36px;
+	height: 36px;
+	margin-left: .5em;
+	border-radius: 50%;
+	&:first-child {
+		margin-left: 0;
+	}
+	&:hover {
+		.opacity(.8);
+	}
+	a {
+		.absolute;
+		top: 52%; // visual adjustment
+		left: 50%;
+		.translateX(-50%);
+		.translateY(-50%);
+		color: @c-white;
+		.font(@f-default-bold);
+		font-size: round(@basefont * 1.125); // 18px
+		text-decoration: none;
+		padding: .35em .7em;
+		.inline-block;
+	}
+}
+// .ksys-button__share--facebook {
+// 	background-color: #3b5998;
+// }
+// .ksys-button__share--googleplus {
+// 	background-color: #dc4e41;
+// }
+// .ksys-button__share--twitter {
+// 	background-color: #55acee;
+// }
+// .ksys-button__share--linkedin {
+// 	background-color: #0077b5;
+// }

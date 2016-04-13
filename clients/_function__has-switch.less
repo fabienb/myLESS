@@ -1,0 +1,50 @@
+// SWITCH-SPECIFIC MIXINS
+// put your mixins here
+
+
+// SWITCH
+.has-switch {
+	background-color: @c-bg-alt;
+	margin: (@gutter / 2) 0 @gutter 0;
+	.font;
+	h4 {
+		background-color: @c-primary;
+		color: @c-white;
+		font-size: round(@basefont * 1.112); // 20px
+		padding: round(@gutter / 4) (@gutter / 2);
+		margin: 0;
+	}
+}
+
+
+
+.is-switch {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	.clearfix;
+}
+.is-switch__toggle {
+	.left;
+	text-align: center;
+	padding: round(@gutter / 4) round(@gutter / 1.5);
+
+	& + & {
+		border-left: 1px solid @c-primary;
+	}
+
+	input[type="radio"] {}
+	label {
+		text-align: center;
+		.block;
+		cursor: pointer;
+	}
+}
+
+
+
+// Customisations
+.ksw__switch--performance {
+	margin: (@gutter / 2) 0 (@gutter / 2) 0;
+	border: 1px solid @c-primary;
+}

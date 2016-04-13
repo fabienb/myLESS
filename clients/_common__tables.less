@@ -1,0 +1,177 @@
+// TABLES
+//------------------------------------------------------------------------------------
+// TABLE-SPECIFIC MIXINS
+
+
+
+//------------------------------------------------------------------------------------
+// TABLE STYLE
+.ksw__table-wrapper {
+
+	@media @size-XL {
+		overflow-x: auto;
+	}
+	@media @size-L {
+		overflow-x: auto;
+	}
+}
+.ksw__table {
+	border-collapse: collapse;
+	width: @full;
+	.font;
+	margin-bottom: @gutter / 2;
+	// border-bottom: 1px solid @c-border;
+	& ~ & {
+		margin-top: @gutter;
+	}
+	th {
+		background-color: @c-bg-table;
+		color: @c-white;
+		// font-size: round(@basefont * 1.1428);
+		font-size: @basefont;
+		font-weight: 700;
+		text-align: left;
+		vertical-align: top;
+		padding: round(@gutter / 4); // 5px as per Peregrine brand definition
+	}
+	td {
+		color: @c-text;
+		font-size: @basefont;
+		text-align: left;
+		vertical-align: top;
+		padding: round(@gutter / 4); // 5px as per Peregrine brand definition
+	}
+	th, td {
+		// text alignment
+		&.is-right	{text-align: right;}
+		&.is-number {text-align: right;}
+		&.is-center	{text-align: center;}
+		&.is-date		{text-align: center;}
+		&.is-doc 		{text-align: center;}
+		&.is-check 	{text-align: center;}
+		// colours
+		&.is-lower 	{color: @c-default-red;}
+		&.is-higher {color: @c-default-green;}
+		// ^ note that these colours may be the opposite in Asia
+	}
+	tbody {
+		tr {
+			// &:hover {
+			// 	background-color: lighten(@c-table-bg, 10%);
+			// }
+			&:nth-child(odd) {
+				background-color: @c-bg-alt;
+			}
+			&:nth-child(even),
+			&.alt {
+				background-color: @c-bg;
+			}
+		}
+	}
+}
+.ksw__table--finder {}
+.ksw__table--finder-fund {
+	font-weight: 700;
+	text-decoration: none;
+	.block;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+.ksw__table--finder-isin {
+	color: @c-text-light;
+	.block;
+}
+
+
+.ksw__table--footnote {
+	color: @c-text;
+	font-size: round(@basefont * .75);
+	padding: round(@gutter / 4);
+	.block;
+}
+
+
+
+//------------------------------------------------------------------------------------
+// RESPONSIVE TABLES, PURE CSS
+.rwd-table-pivot() {
+	thead {
+		.hide;
+	}
+	tbody {
+		td {
+			.block;
+			&:last-child {
+				text-align: left;
+			}
+			&.is-number {
+				text-align: left @i;
+			}
+			&:before {
+				content: attr(data-th);
+				width: 25%;
+				.font(@f-default-bold);
+				.inline-block;
+			}
+		}
+	}
+}
+.ksw__table-rwd-pivot--medium {
+	@media @size-M {
+		.rwd-table-pivot();
+	}
+}
+.ksw__table-rwd-pivot--small {
+	@media @size-S {
+		.rwd-table-pivot();
+	}
+}
+.ksw__table-rwd-pivot--xsmall {
+	@media @size-XS {
+		.rwd-table-pivot();
+	}
+}
+
+
+
+//------------------------------------------------------------------------------------
+// CUSTOMISATIONS
+
+// Column sizes
+// .ksw__card--funddetails {
+// 	@columns: 2;
+// 	td {width: @full / @columns;}
+// }
+// .ksw__card--codes {
+// 	@columns: 4;
+// 	td {width: @full / @columns;}
+// }
+// .ksw__card--distribution {
+// 	@columns: 3;
+// 	td {width: @full / @columns;}
+// }
+// .ksw__card--cperf-table {
+// 	@columns: 5;
+// 	td {width: @full / @columns;}
+// }
+// .ksw__card--dperf-table {
+// 	@columns: 14;
+// 	td {width: @full / @columns;}
+// }
+// .ksw__card--allocation-bond {
+// 	@columns: 2;
+// 	td {width: @full / @columns;}
+// }
+// .ksw__card--allocation-nav {
+// 	@columns: 4;
+// 	td {width: @full / @columns;}
+// }
+// .ksw__card--allocation-stats {
+// 	@columns: 2;
+// 	td {width: @full / @columns;}
+// }
+// .ksw__card--allocation-add {
+// 	@columns: 2;
+// 	td {width: @full / @columns;}
+// }

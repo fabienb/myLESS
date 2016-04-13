@@ -1,0 +1,53 @@
+//---------------------------------------------
+// HELP PANEL
+//
+// accesskey (defined within the element that accepts :focus in the page): H
+// MAC: 					CTRL + ALT + H
+// PC (Chrome): 	ALT + H
+// PC (Firefox): 	SHIFT + ALT + H
+
+
+.help-panel {
+
+	.fixed;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	z-index: -1;
+	cursor: default;
+	.transition(opacity 200ms ease-in-out);
+
+	&:focus {
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 96vw;
+		height: 96vh;
+		background-color: white;
+		margin: 2vh 0 0 2vw;
+		border: 1px solid @c-border;
+		.depth--shadow(5);
+		opacity: 1;
+		z-index: 987654321; // any ridiculous number really
+	}
+}
+
+.help__content {
+	.relative;
+	height: 100%;
+	padding: @gutter;
+}
+
+.help__close {
+	.absolute;
+	top: @gutter / 2;
+	right: @gutter / 2;
+	color: fade(@c-text, 70%);
+	font-size: round(@basefont * .75);
+	text-decoration: none;
+	text-transform: uppercase;
+	&:hover {
+		color: @c-text;
+	}
+}

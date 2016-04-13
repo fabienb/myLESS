@@ -1,0 +1,27 @@
+ul.ksys-social
+	li.ksys-button__share.ksys-button__share--linkedin
+		a(href="javascript:window.open('http://www.linkedin.com/shareArticle?url=' + encodeURIComponent(document.location) + '&title=' + encodeURIComponent(document.title),'_blank')")
+			i.is-icon
+				include _svg__icon-linkedin
+	//- can add &mini=true
+	li.ksys-button__share.ksys-button__share--facebook
+		a(href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(document.location) + '?t=' + encodeURIComponent(document.title),'_blank')")
+			i.is-icon
+				include _svg__icon-facebook
+	//- li.ksys-button__share.ksys-button__share--googleplus
+	//- 	a(href="javascript:window.open('https://plusone.google.com/_/+1/confirm?hl=en&url=' + encodeURIComponent(document.location),'_blank')")
+	//- 		| Google +1
+	li.ksys-button__share.ksys-button__share--twitter
+		a(href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(document.location) + '&text=' + encodeURIComponent(document.title) + '&via=eisturdza&hashtags=eisturdza','_blank')")
+			i.is-icon
+				include _svg__icon-twitter
+	//- &via=: optional Twitter username of content author (don’t include “@”)
+	//- &hashtags=: optional Hashtags appended onto the tweet (comma separated. don’t include “#”)
+	li.ksys-button__share.ksys-button__share--googleplus
+		a(href="javascript:window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.location),'_blank')")
+			i.is-icon
+				include _svg__icon-googleplus
+	li.ksys-button__share.ksys-button__share--print
+		a(href="fundfactsheet.html", alt="Print digital factsheet")
+			i.is-icon
+				include _svg__icon-print

@@ -1,0 +1,58 @@
+// SEARCH (Small, within vertical filters sidebar)
+//------------------------------------------------------------------------------------
+// SEARCH-SPECIFIC MIXINS
+
+
+
+
+//------------------------------------------------------------------------------------
+// SEARCH STYLE
+.ksw-search {
+	padding-bottom: @gutter;
+	margin-bottom: 0;
+	border-bottom: 1px solid @c-border;
+	* {
+		.boxsizing;
+	}
+
+	@media @size-M {
+		padding: round(@gutter / 1.5);
+	}
+}
+
+.ksw-search-wrapper {
+	.relative;
+	width: @full;
+	margin: 0 (@gutter / 2);
+	.table;
+
+	@media @size-M {
+		width: @full;
+		margin: 0;
+	}
+}
+
+.ksw-search__input {
+	width: ~"calc(@{full} - 65px)";
+	height: 44px;
+	.font;
+	font-size: round(@basefont * .7);
+	vertical-align: top;
+	padding: 0 (@gutter / 2);
+	border: 1px solid @c-border;
+	.table-cell;
+	// .appearance(textfield);
+	box-sizing: border-box @i;
+	// !important because of ShadowDOM
+	// input[type=search] applies content-box while [=text] applies correct border-box
+
+	@media @size-M {
+		width: ~"calc(@{full} - 45px)";
+	}
+}
+
+.ksw-search--button,
+.ksw__button--search {
+	// check button.less
+	padding: 0 round(@gutter / 2);
+}

@@ -1,0 +1,42 @@
+// PAGINATION (FUND PAGE)
+//------------------------------------------------------------------------------------
+// PAGINATION-SPECIFIC MIXINS
+
+
+
+//------------------------------------------------------------------------------------
+// PAGINATION STYLE
+.ksw__pagination {
+	text-align: right;
+}
+.ksw__pagination--list {
+	.inline-block;
+	.clearfix;
+}
+.ksw__pagination--item {
+	.left;
+	background-color: @c-bg-table;
+	text-align: center;
+	border-radius: round(@gutter / 4);
+	& + & {
+		margin-left: round(@gutter / 5);
+	}
+	a {
+		color: @c-text;
+		text-decoration: none;
+		text-transform: uppercase;
+		padding: (@gutter / 2) round(@gutter * .8);
+		.block;
+	}
+	&:hover {
+		background-color: @c-bg-table-alt;
+	}
+	&.is-active,
+	&.is-active:hover {
+		background-color: @c-link;
+		font-weight: 700;
+		a {
+			color: @c-white;
+		}
+	}
+}

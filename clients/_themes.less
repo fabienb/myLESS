@@ -1,0 +1,59 @@
+//---------------------------------------------
+// THEMES
+//
+// Birdfolio Blues colour palette:
+// https://color.adobe.com/Copy-of-Birdfolio-Blues-color-theme-6601605/edit/?copy=true&base=2&rule=Custom&selected=4&name=Copy%20of%20Copy%20of%20Birdfolio%20Blues&mode=rgb&rgbvalues=0.16862745098039217,0.22745098039215686,0.25882352941176473,0.24705882352941178,0.3411764705882353,0.396078431372549,0.7411764705882353,0.8313725490196079,0.8705882352941177,0.9372549019607843,0.9372549019607843,0.9372549019607843,1,0.3254901960784314,0.050980392156862744&swatchOrder=0,1,2,3,4
+// #2B3A42
+// #3F5765
+// #BDD4DE
+// #EFEFEF
+// #FF530D
+//
+
+
+
+// -------------------------------------------------------
+// LOOP TO CHANGE THEME COLOURS
+// -- themes count
+@themes-num: 5;
+// -- colours to use
+// main
+@c-theme-main-1: @c-accent; 		// Fund Facts
+@c-theme-main-2: @c-blue; 			// Temporary 1
+@c-theme-main-3: @c-red;			// Temporary 2
+@c-theme-main-4: @c-green; 		// Temporary 3
+@c-theme-main-5: @c-white; 		// Temporary 4
+// links
+@c-theme-link-1: @c-accent; 		// Fund Facts
+@c-theme-link-2: @c-blue; 			// Temporary 1
+@c-theme-link-3: @c-red;			// Temporary 2
+@c-theme-link-4: @c-green; 			// Temporary 3
+@c-theme-link-5: @c-white; 			// Temporary 4
+// can do the same with fonts, of course
+
+// -- function
+.themeColouring (@i) when (@i > 0) {
+
+	// you can now add all the colour variations inside this loop
+	// keep the comment so Grunt/Gulp will know where to split the file
+	/* --- Theme Opening --- */
+	.theme--@{i} {
+
+		.menu__list--item {
+			em {
+				background-color: ~"@{c-theme-main-@{i}}";
+			}
+		}
+		h4 {
+			color: ~"@{c-theme-main-@{i}}";
+			a {
+				color: ~"@{c-theme-link-@{i}}";
+			}
+		}
+
+	}
+
+	// rinse and repeat
+	.themeColouring((@i - 1)); 		// goes backwards: from highest number to 1
+}
+.themeColouring(@themes-num);

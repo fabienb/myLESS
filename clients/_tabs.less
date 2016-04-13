@@ -1,0 +1,97 @@
+// TABS (FUND PAGE)
+//------------------------------------------------------------------------------------
+// TAB-SPECIFIC MIXINS
+@tabs-count: 	3;
+
+
+
+//------------------------------------------------------------------------------------
+// TABS STYLE
+.ksw__tabs {}
+.ksw__tabs--list {
+	list-style-type: none;
+	width: @full;
+	padding: 0;
+	margin: 0;
+	border-bottom: 1px solid @c-border;
+	.clearfix;
+}
+.ksw__tabs--item {
+	.left;
+	background-color: @c-bg-table;
+	.font(@f-default-bold, 400, 1);
+	font-size: @basefont;
+	text-align: center;
+	border-radius: @gutter @gutter 0 0;
+
+	@media @size-S {
+		border-radius: 0;
+		margin-top: 1px;
+	}
+	a {
+		color: @c-primary-dark;
+		text-decoration: none;
+		text-transform: uppercase;
+		padding: round(@gutter * .75) (@gutter * 2);
+		.block;
+
+		@media @size-M {
+			padding: round(@gutter * .75) @gutter;
+		}
+	}
+	&.is-active,
+	&:hover {
+		background-color: @c-primary-dark;
+		a {
+			color: @c-white;
+		}
+	}
+}
+
+.ksw__tabs--panel {
+	padding: @gutter 0;
+	.clearfix;
+
+	// when in Fund Page:
+	.ksw-fundpage & {
+		border-bottom: 3px solid @c-border;
+	}
+}
+
+
+
+//------------------------------------------------------------------------------------
+// CUSTOMISATIONS
+// 1. FUND FINDER
+// Prices
+.ksw__tabs--panel-prices {}
+// Performance
+.ksw__tabs--panel-performance {}
+// Literature
+.ksw__tabs--panel-literature {}
+
+// 2. FUND PAGE
+// Fund Facts
+.ksw__tabs--panel-facts {}
+// Cumulative Performance
+.ksw__tabs--panel-fundperformance {}
+// Allocation
+.ksw__tabs--panel-allocation {}
+// Commentary
+.ksw__tabs--panel-commentary {}
+
+
+
+
+//------------------------------------------------------------------------------------
+// FLEXBOX ENHANCEMENT
+.ksw__tabs--list {
+	.flex;
+	@media @size-S {
+		.flex-direction(column);
+	}
+}
+.ksw__tabs--item {
+	.flex-grow(1);
+	.flex-shrink(1);
+}

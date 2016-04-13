@@ -1,0 +1,48 @@
+// WEB
+//------------------------------------------------------------------------------------
+// WEB-SPECIFIC MIXINS
+
+
+
+//------------------------------------------------------------------------------------
+// WEB STYLE
+// Headings
+.ksys-widget {
+	h1 {
+		.font(@f-default-bolder, 400, 1.143);
+		font-size: round(@basefont * 2.25); // 36px
+		text-transform: uppercase;
+	}
+	h2 {
+		.font(@f-default-bold);
+		font-size: round(@basefont * 2.25); // 36px
+	}
+	h3 {
+		.font(@f-default-bold);
+		font-size: round(@basefont * 1.5); // 24px
+	}
+	h4 {
+		.font(@f-default-bold);
+		font-size: round(@basefont * 1.125); // 18px
+	}
+	// Paragraphs
+	p {
+		.font(@f-default);
+	}
+	strong, b {
+		.font(@f-default-medium);
+	}
+	// Links
+	a:not(.ksw__button) {
+		color: @c-link;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	a,
+	*:focus {
+		outline: none;
+		// must specify an alternative style
+	}
+}

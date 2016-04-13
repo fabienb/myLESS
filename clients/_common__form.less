@@ -1,0 +1,73 @@
+// FORMS (FUND PAGE)
+//------------------------------------------------------------------------------------
+// FORMS-SPECIFIC MIXINS
+
+
+
+//------------------------------------------------------------------------------------
+// FORMS STYLE
+
+// Labels
+.ksw__label {}
+.ksw__label--top {
+	margin-bottom: round(@gutter / 4);
+	.block;
+}
+.ksw__label--left {
+	margin-right: round(@gutter / 3);
+}
+
+
+
+// Datepicker
+input[type="date"],
+input[type="month"], {
+	.font(@f-default);
+	font-size: round(@basefont * .9);
+	// text-transform: uppercase;
+	// padding: round((@gutter / 4) + 3) (@gutter / 2) round((@gutter / 4) - 3) (@gutter / 2);
+	// ^ Calibre
+	padding: round(@gutter / 4) round(@gutter / 2);
+	border: 1px solid darken(@c-border, 20%);
+	.boxsizing;
+}
+
+
+
+// Select
+.is-select {
+	.relative;
+	&:after {
+		content: '\25BC'; // = down arrow
+		.absolute;
+		top: 		50%;
+		right: 	8px;
+		.translateY(-50%);
+		width: 	18px;
+		height: 18px;
+		color: @c-text;
+		font-size: round(@basefont * .75);
+		pointer-events: none; // so you can click through
+		.opacity(.5);
+	}
+	select {
+		.appearance(none);
+		width: 180px;
+		font-size: round(@basefont * .85);
+		padding: .5em .75em .5em .75em;
+		border: 1px solid darken(@c-border, 15%);
+		border-radius: 0;
+		&:focus::-ms-value,
+		&::-ms-value {
+			background: none; // removes coloured background on IE10+ when selected
+		}
+	}
+}
+.ksw-filters__filter-dropdown {
+	@icon-size: 18px; // see :after above
+
+	font-size: @basefont;
+	padding: round(@gutter / 4) (@icon-size + (@gutter / 2)) round(@gutter / 4) (@gutter / 2);
+	border: 1px solid @c-border;
+	border-radius: 0;
+}

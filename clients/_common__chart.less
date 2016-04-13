@@ -1,0 +1,73 @@
+// CHARTS (FUND PAGE)
+//------------------------------------------------------------------------------------
+// CHART-SPECIFIC MIXINS
+
+
+
+//------------------------------------------------------------------------------------
+// CHART STYLE
+.ksw__charts {}
+
+.ksw__chart {
+	width: 100%;
+}
+
+.ksw__chart--tooltip {
+	color: @c-white;
+	.font;
+	font-size: round(@basefont * .9);
+	// text-shadow: 0 1px 1px @c-border;
+	padding: (@gutter / 2) @gutter;
+	.depth--shadow(1);
+	b {
+		.font(@f-default-bold, 400);
+		font-size: round(@basefont * .8);
+		margin-right: round(@gutter / 3);
+	}
+}
+
+.is-chart-period-selector {
+	.right;
+	height: @basefont * 2;
+	margin-right: @gutter / 2;
+	ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		.inline-block;
+		.clearfix;
+
+		@media @size-S {
+			.translateY(6px);
+		}
+
+		li {
+			.left;
+			margin-left: 1px;
+			a {
+				.inline-block;
+			}
+			&.is-active {
+				.ksw__button--action {
+					background-color: darken(@c-accent, 10%);
+				}
+			}
+		}
+	}
+}
+
+
+
+//------------------------------------------------------------------------------------
+// CHART TYPES
+.ksw__charts--line {}
+.ksw__charts--pie {}
+.ksw__charts--area {}
+.ksw__charts--column {}
+.ksw__charts--scatter {}
+.ksw__charts--web {}
+
+
+
+//------------------------------------------------------------------------------------
+// CUSTOMISATIONS

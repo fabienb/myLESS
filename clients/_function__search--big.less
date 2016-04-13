@@ -1,0 +1,119 @@
+// SEARCH (Big, above Fund Explorer/Finder)
+//------------------------------------------------------------------------------------
+// SEARCH-SPECIFIC MIXINS
+
+
+
+
+//------------------------------------------------------------------------------------
+// SEARCH STYLE
+.ksw-search {
+	margin-bottom: @gutter * 1.5;
+	* {
+		.boxsizing;
+	}
+}
+.ksw-search-wrapper {
+	.relative;
+	width: 70%;
+	margin: 0 15%;
+	.table;
+	// flexbox enhancement
+	.flex;
+	.flex-direction(row);
+	.flex-grow(1);
+	.flex-shrink(0);
+	.flex-basis(45px); // ?
+	.flex-wrap(no-wrap);
+
+	@media @size-XL {
+		margin-left: 200px;
+	}
+	@media @size-L {
+		margin-left: 200px;
+	}
+	@media @size-S {
+		width: 90%;
+		margin: 0 auto;
+	}
+}
+.ksw-search__input {
+	width: ~"calc(@{full} - 101px)"; // 101px is the size of the Search button
+	height: 44px;
+	.font(@f-default);
+	font-size: round(@basefont * 1.1428);
+	vertical-align: top;
+	padding: round(@gutter / 2);
+	// padding: round((@gutter / 2) + 3) round(@gutter / 2) round((@gutter / 2) - 3) round(@gutter / 2);
+	// ^ because of poor Calibre font line spacing
+	.table-cell;
+	.appearance(textfield);
+	box-sizing: border-box @i;
+	// !important because of ShadowDOM
+	// input[type=search] applies content-box while [=text] applies correct border-box
+
+	@media @size-S {
+		font-size: @basefont;
+	}
+}
+.ksw-search__button {
+	// 135x44
+	height: 44px;
+	vertical-align: top;
+	padding: (@gutter / 2) (@gutter * 2);
+	margin-left: -5px;
+	.table-cell;
+}
+
+
+
+// Fancy labeling
+.ksw-search__input {
+	// the below styles must be kept separated for browser compatibility issues
+	// the style used to persist on type but it's not working anymore, will check
+	&::-webkit-input-placeholder {
+		.transition(all 200ms ease-in-out);
+		.accelerate;
+	}
+	&:focus::-webkit-input-placeholder {
+		width: @full;
+		color: fade(@c-text, 75%);
+		font-size: round(@basefont * .7);
+		-webkit-transform: translateX(-(@gutter / 2)) translateY(-28px);
+		transform: translateX(-(@gutter / 2)) translateY(-28px);
+		visibility: visible @i;
+	}
+	&:-moz-input-placeholder {
+		.transition(all 200ms ease-in-out);
+		.accelerate;
+	}
+	&:focus:-moz-input-placeholder {
+		color: fade(@c-text, 75%);
+		font-size: round(@basefont * .7);
+		-webkit-transform: translateX(-(@gutter / 2)) translateY(-28px);
+		transform: translateX(-(@gutter / 2)) translateY(-28px);
+		visibility: visible @i;
+	}
+	&::-moz-input-placeholder {
+		.transition(all 200ms ease-in-out);
+		.accelerate;
+	}
+	&:focus::-moz-input-placeholder {
+		color: fade(@c-text, 75%);
+		font-size: round(@basefont * .7);
+		-webkit-transform: translateX(-(@gutter / 2)) translateY(-28px);
+		transform: translateX(-(@gutter / 2)) translateY(-28px);
+		visibility: visible @i;
+	}
+	&::-ms-input-placeholder {
+		.transition(all 200ms ease-in-out);
+		.accelerate;
+	}
+	&:focus::-ms-input-placeholder {
+		color: fade(@c-text, 75%);
+		font-size: round(@basefont * .7);
+		-webkit-transform: translateX(-(@gutter / 2)) translateY(-28px);
+		transform: translateX(-(@gutter / 2)) translateY(-28px);
+		visibility: visible @i;
+	}
+}

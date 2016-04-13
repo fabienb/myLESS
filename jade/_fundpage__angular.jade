@@ -1,0 +1,622 @@
+script.
+	angular.module('EisFundpage', ['EisTabs', 'EisPerformanceChart', 'EisSectorAllocationChart', 'EisMarketCapAllocationChart', 'EisMaturityAllocationChart', 'EisAllocationCharacteristicsChart', 'EisGeographicalAllocationChart']);
+
+	// AngularJS Tabs
+	angular.module('EisTabs', [])
+	.controller('EisTabsCtrl', ['$scope', function ($scope){
+		$scope.tabs = [{
+			title: 	'Fund Facts',
+			url: 		'ksw__ng--panel1.html',
+			id: 		'ksw__tabs--tab1',
+			aria: 	'ksw__tabs--panel1'
+		}, {
+			title: 	'Performance',
+			url: 		'ksw__ng--panel2.html',
+			id: 		'ksw__tabs--tab2',
+			aria: 	'ksw__tabs--panel2'
+		}, {
+			title: 	'Allocations',
+			url: 		'ksw__ng--panel3.html',
+			id: 		'ksw__tabs--tab3',
+			aria: 	'ksw__tabs--panel3'
+		}, {
+			title: 	'Documents',
+			url: 		'ksw__ng--panel4.html',
+			id: 		'ksw__tabs--tab4',
+			aria: 	'ksw__tabs--panel4'
+		}, {
+			title: 	'Commentary',
+			url: 		'ksw__ng--panel5.html',
+			id: 		'ksw__tabs--tab5',
+			aria: 	'ksw__tabs--panel5'
+		}];
+		$scope.currentTab = 'ksw__ng--panel1.html';
+		$scope.onClickTab = function (tab) {
+			$scope.currentTab = tab.url;
+		}
+		$scope.isActiveTab = function(tabUrl) {
+			return tabUrl == $scope.currentTab;
+		}
+	}]);
+
+
+
+	// Performance Chart
+	angular.module('EisPerformanceChart', [])
+		.controller('EisPerformanceChartCtrl', ['$scope', function ($scope){
+			var chart1 = new Highcharts.Chart({
+				chart: {
+					renderTo: 'ksw__chart--01',
+					type: 'line',
+					events: {
+						load: function() {
+							var series = this.series[0];
+							$scope.$on('updateChart', function(e, x, y) {
+								update(series, x, y);
+							});
+						}
+					}
+				},
+				plotOptions: {
+					line: {
+						marker: {
+							enabled: false
+						}
+					}
+				},
+				title: {
+					useHTML: true,
+					text: '',
+					margin: 0
+				},
+				colors: [
+				'#b5171c',
+				'#ef493e',
+				'#9c891a',
+				'#cdbe19',
+				'#002f46',
+				'#005383',
+				'#006f85',
+				'#03bbc1',
+				'#b1046a',
+				'#e72d8d',
+				'#004854',
+				'#0094b4'
+				],
+				tooltip: {
+					useHTML: true,
+					backgroundColor: null,
+					borderWidth: 0,
+					shadow: false,
+					//- shared: true,
+					formatter: function() {
+						// return '<b>' + this.point.name + '</b>: ' + this.y + ' %';
+						return '<div style="background-color:' + this.point.color + '" class="ksw__chart--tooltip"><b>' + this.series.name + '</b> ' + this.y + ' %</div>';
+					}
+				},
+				legend: {
+					borderRadius: 0,
+					borderWidth: 0,
+					itemStyle: {
+						fontFamily: 'Gotham-Book',
+						fontSize: '12px',
+						color: '#000'
+					}
+				},
+				xAxis: {
+					tickLength: 5,
+					labels: {
+						y: 27,
+						style: {
+							fontFamily: 'Gotham-Light',
+							fontSize: '12px',
+							color: '#000'
+						}
+					}
+				},
+				yAxis: {
+					title: {
+						useHTML: true,
+						text: '',
+						margin: 0
+					},
+					labels: {
+						style: {
+							fontFamily: 'Gotham-Light',
+							fontSize: '12px',
+							color: '#000'
+						}
+					}
+				},
+				series: [{
+					name: 'Global High Yield Equity Fund',
+					data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+				}, {
+					name: 'MSCI World Index (€)',
+					data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 13.1, 8.6, 2.5]
+				}, {
+					name: 'TOPIX',
+					data: [0.8, 0.8, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 5.7, 7.6, 1.5]
+				}, {
+					name: 'Morningstar',
+					data: [0.6, 0.8, 5.7, 11.3, 17.0, 24.8, 22.0, 24.1, 20.1, 14.1, 8.9, 2.9],
+					visible: false
+				}],
+				credits: {
+					enabled: false
+				}
+			});
+			function update(series, x, y) {
+				series.addPoint([x, y], false, false, true);
+			}
+	}]);
+
+
+
+	// Sector Allocation
+	angular.module('EisSectorAllocationChart', [])
+		.controller('EisSectorAllocationChartCtrl', ['$scope', function ($scope){
+			var chart1 = new Highcharts.Chart({
+				chart: {
+					renderTo: 'ksw__chart--02',
+					type: 'pie',
+					height: 300,
+					//- spacing: [0, 0, 0, 0],
+					//- spacingTop: 0,
+					//- margin: [0, 0, 0, 0],
+					//- marginTop: 0,
+					events: {
+						load: function() {
+							var series = this.series[0];
+							$scope.$on('updateChart', function(e, x, y) {
+								update(series, x, y);
+							});
+						}
+					}
+				},
+				plotOptions: {
+					pie: {
+						dataLabels: {
+							enabled: false
+						},
+						innerSize: 180
+						//- innerSize: 110
+					}
+				},
+				title: {
+					useHTML: true,
+					text: '',
+					margin: 0
+				},
+				colors: [
+				'#b5171c',
+				'#ef493e',
+				'#9c891a',
+				'#cdbe19',
+				'#002f46',
+				'#005383',
+				'#006f85',
+				'#03bbc1',
+				'#b1046a',
+				'#e72d8d',
+				'#004854',
+				'#0094b4'
+				],
+				tooltip: {
+					useHTML: true,
+					backgroundColor: null,
+					borderWidth: 0,
+					shadow: false,
+					//- shared: true,
+					formatter: function() {
+						// return '<b>' + this.point.name + '</b>: ' + this.y + ' %';
+						return '<div style="background-color:' + this.point.color + '" class="ksw__chart--tooltip"><b>' + this.point.name + '</b><br>' + this.y + ' %</div>';
+					}
+				},
+				legend: {
+					borderRadius: 0,
+					borderWidth: 0,
+					itemStyle: {
+						fontFamily: 'Gotham-Book',
+						fontSize: '12px',
+						color: '#000'
+					}
+				},
+				series: [{
+					name: 'Sector Allocation',
+					colorByPoint: true,
+					data: [{
+						name: 'Banks',
+						y: 20.79
+					}, {
+						name: 'Wholesale Trade',
+						y: 11.49
+					}, {
+						name: 'Real Estate',
+						y: 10.37
+					}, {
+						name: 'Construction',
+						y: 9.98
+					}]
+				}],
+				credits: {
+					enabled: false
+				}
+			});
+			function update(series, x, y) {
+				series.addPoint([x, y], false, false, true);
+			}
+	}]);
+
+
+
+	// Market Cap Allocation
+	angular.module('EisMarketCapAllocationChart', [])
+		.controller('EisMarketCapAllocationChartCtrl', ['$scope', function ($scope){
+			var chart1 = new Highcharts.Chart({
+				chart: {
+					renderTo: 'ksw__chart--03',
+					type: 'pie',
+					height: 300,
+					//- spacing: [0, 0, 0, 0],
+					//- spacingTop: 0,
+					//- margin: [0, 0, 0, 0],
+					//- marginTop: 0,
+					events: {
+						load: function() {
+							var series = this.series[0];
+							$scope.$on('updateChart', function(e, x, y) {
+								update(series, x, y);
+							});
+						}
+					}
+				},
+				plotOptions: {
+					pie: {
+						dataLabels: {
+							enabled: false
+						},
+						innerSize: 180
+						//- innerSize: 110
+					}
+				},
+				title: {
+					useHTML: true,
+					text: '',
+					margin: 0
+				},
+				colors: [
+				'#b5171c',
+				'#ef493e',
+				'#9c891a',
+				'#cdbe19',
+				'#002f46',
+				'#005383',
+				'#006f85',
+				'#03bbc1',
+				'#b1046a',
+				'#e72d8d',
+				'#004854',
+				'#0094b4'
+				],
+				tooltip: {
+					useHTML: true,
+					backgroundColor: null,
+					borderWidth: 0,
+					shadow: false,
+					//- shared: true,
+					formatter: function() {
+						// return '<b>' + this.point.name + '</b>: ' + this.y + ' %';
+						return '<div style="background-color:' + this.point.color + '" class="ksw__chart--tooltip"><b>' + this.point.name + '</b><br>' + this.y + ' %</div>';
+					}
+				},
+				legend: {
+					borderRadius: 0,
+					borderWidth: 0,
+					itemStyle: {
+						fontFamily: 'Gotham-Book',
+						fontSize: '12px',
+						color: '#000'
+					}
+				},
+				series: [{
+					name: 'Market Capital Allocation',
+					colorByPoint: true,
+					data: [{
+						name: 'Large Cap. &gt; JPY 500 bn.',
+						y: 74.21
+					}, {
+						name: 'Medium Cap. JPY 100-500bn.',
+						y: 21.08
+					}, {
+						name: 'Small Cap. &lt; JPY 100 bn.',
+						y: 4.09
+					}, {
+						name: 'Cash',
+						y: 0.62
+					}]
+				}],
+				credits: {
+					enabled: false
+				}
+			});
+			function update(series, x, y) {
+				series.addPoint([x, y], false, false, true);
+			}
+	}]);
+
+
+
+	// Maturity Allocation
+	angular.module('EisMaturityAllocationChart', [])
+		.controller('EisMaturityAllocationChartCtrl', ['$scope', function ($scope){
+			var chart1 = new Highcharts.Chart({
+				chart: {
+					renderTo: 'ksw__chart--04',
+					type: 'pie',
+					height: 300,
+					events: {
+						load: function() {
+							var series = this.series[0];
+							$scope.$on('updateChart', function(e, x, y) {
+								update(series, x, y);
+							});
+						}
+					}
+				},
+				plotOptions: {
+					pie: {
+						dataLabels: {
+							enabled: false
+						},
+						innerSize: 180
+					}
+				},
+				title: {
+					useHTML: true,
+					text: '',
+					margin: 0
+				},
+				colors: [
+				'#b5171c',
+				'#ef493e',
+				'#9c891a',
+				'#cdbe19',
+				'#002f46',
+				'#005383',
+				'#006f85',
+				'#03bbc1',
+				'#b1046a',
+				'#e72d8d',
+				'#004854',
+				'#0094b4'
+				],
+				tooltip: {
+					useHTML: true,
+					backgroundColor: null,
+					borderWidth: 0,
+					shadow: false,
+					//- shared: true,
+					formatter: function() {
+						// return '<b>' + this.point.name + '</b>: ' + this.y + ' %';
+						return '<div style="background-color:' + this.point.color + '" class="ksw__chart--tooltip"><b>' + this.point.name + '</b> ' + this.y + ' %</div>';
+					}
+				},
+				legend: {
+					borderRadius: 0,
+					borderWidth: 0,
+					itemStyle: {
+						fontFamily: 'Gotham-Book',
+						fontSize: '12px',
+						color: '#000'
+					}
+				},
+				series: [{
+					name: 'Maturity Allocation',
+					colorByPoint: true,
+					data: [{
+						name: 'Cash',
+						y: 2.23
+					}, {
+						name: '&lt; 1 Year',
+						y: 3.25
+					}, {
+						name: '1-3 Years',
+						y: 18.01
+					}, {
+						name: '3-5 Years',
+						y: 43.42
+					}]
+				}],
+				credits: {
+					enabled: false
+				}
+			});
+			function update(series, x, y) {
+				series.addPoint([x, y], false, false, true);
+			}
+	}]);
+
+
+
+	// Allocation Characteristics
+	angular.module('EisAllocationCharacteristicsChart', [])
+		.controller('EisAllocationCharacteristicsChartCtrl', ['$scope', function ($scope){
+			var chart1 = new Highcharts.Chart({
+				chart: {
+					renderTo: 'ksw__chart--05',
+					type: 'pie',
+					height: 300,
+					events: {
+						load: function() {
+							var series = this.series[0];
+							$scope.$on('updateChart', function(e, x, y) {
+								update(series, x, y);
+							});
+						}
+					}
+				},
+				plotOptions: {
+					pie: {
+						dataLabels: {
+							enabled: false
+						},
+						innerSize: 180
+					}
+				},
+				title: {
+					useHTML: true,
+					text: '',
+					margin: 0
+				},
+				colors: [
+				'#b5171c',
+				'#ef493e',
+				'#9c891a',
+				'#cdbe19',
+				'#002f46',
+				'#005383',
+				'#006f85',
+				'#03bbc1',
+				'#b1046a',
+				'#e72d8d',
+				'#004854',
+				'#0094b4'
+				],
+				tooltip: {
+					useHTML: true,
+					backgroundColor: null,
+					borderWidth: 0,
+					shadow: false,
+					//- shared: true,
+					formatter: function() {
+						// return '<b>' + this.point.name + '</b>: ' + this.y + ' %';
+						return '<div style="background-color:' + this.point.color + '" class="ksw__chart--tooltip"><b>' + this.point.name + '</b> ' + this.y + ' %</div>';
+					}
+				},
+				legend: {
+					borderRadius: 0,
+					borderWidth: 0,
+					itemStyle: {
+						fontFamily: 'Gotham-Book',
+						fontSize: '12px',
+						color: '#000'
+					}
+				},
+				series: [{
+					name: 'Allocation Characteristics',
+					colorByPoint: true,
+					data: [{
+						name: 'AAA',
+						y: 17.36
+					}, {
+						name: 'AA',
+						y: 26.94
+					}, {
+						name: 'A',
+						y: 26.94
+					}, {
+						name: 'BBB',
+						y: 35.13
+					}]
+				}],
+				credits: {
+					enabled: false
+				}
+			});
+			function update(series, x, y) {
+				series.addPoint([x, y], false, false, true);
+			}
+	}]);
+
+
+
+	// Geographical Characteristics
+	angular.module('EisGeographicalAllocationChart', [])
+		.controller('EisGeographicalAllocationChartCtrl', ['$scope', function ($scope){
+			var chart1 = new Highcharts.Chart({
+				chart: {
+					renderTo: 'ksw__chart--06',
+					type: 'pie',
+					height: 300,
+					events: {
+						load: function() {
+							var series = this.series[0];
+							$scope.$on('updateChart', function(e, x, y) {
+								update(series, x, y);
+							});
+						}
+					}
+				},
+				plotOptions: {
+					pie: {
+						dataLabels: {
+							enabled: false
+						},
+						innerSize: 180
+					}
+				},
+				title: {
+					useHTML: true,
+					text: '',
+					margin: 0
+				},
+				colors: [
+				'#b5171c',
+				'#ef493e',
+				'#9c891a',
+				'#cdbe19',
+				'#002f46',
+				'#005383',
+				'#006f85',
+				'#03bbc1',
+				'#b1046a',
+				'#e72d8d',
+				'#004854',
+				'#0094b4'
+				],
+				tooltip: {
+					useHTML: true,
+					backgroundColor: null,
+					borderWidth: 0,
+					shadow: false,
+					//- shared: true,
+					formatter: function() {
+						// return '<b>' + this.point.name + '</b>: ' + this.y + ' %';
+						return '<div style="background-color:' + this.point.color + '" class="ksw__chart--tooltip"><b>' + this.point.name + '</b> ' + this.y + ' %</div>';
+					}
+				},
+				legend: {
+					borderRadius: 0,
+					borderWidth: 0,
+					itemStyle: {
+						fontFamily: 'Gotham-Book',
+						fontSize: '12px',
+						color: '#000'
+					}
+				},
+				series: [{
+					name: 'Geographical Allocation',
+					colorByPoint: true,
+					data: [{
+						name: 'Eurozone',
+						y: 76.96
+					}, {
+						name: 'North America',
+						y: 5.71
+					}, {
+						name: 'Asia-Pacific',
+						y: 3.15
+					}, {
+						name: 'Cash',
+						y: 2.01
+					}]
+				}],
+				credits: {
+					enabled: false
+				}
+			});
+			function update(series, x, y) {
+				series.addPoint([x, y], false, false, true);
+			}
+	}]);

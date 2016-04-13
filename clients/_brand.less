@@ -1,0 +1,237 @@
+// DAVY BRAND
+//------------------------------------------------------------------------------------
+// TABLE OF CONTENTS
+//
+// 1. Colours
+// 2. Typography
+// 3. Fun
+//
+//------------------------------------------------------------------------------------
+
+
+
+
+//------------------------------------------------------------------------------------
+// COLOURS
+//------------------------------------------------------------------------------------
+//
+// Reference (do not use these straight away in the CSS, check point 3 for the variables to use):
+// 1. Davy brand colours, from Davy Guidelines PDF
+// -- primary
+@c-davy-red: 					#b9002f;
+@c-davy-dark-grey: 		#5b5d62;
+@c-davy-mid-grey: 		#808184;
+@c-davy-light-grey:		#e6e7e8;
+@c-teal: 							#0094b4;
+@c-fuchsia:				 		#e72d8d;
+@c-warm-red:					#ef493e;
+@c-ochre: 						#cdbe19;
+@c-turquoise: 				#03bbc1;
+@c-navy:							#005383;
+// -- secondary
+@c-dark-teal: 				#004854;
+@c-dark-fuchsia: 			#b1046a;
+@c-dark-warm-red: 		#b5171c;
+@c-dark-ochre: 				#9c891a;
+@c-dark-turquoise: 		#006f85;
+@c-dark-navy: 				#002f46;
+// ---
+// 2. some high level definitions
+@c-section-title: 	@c-davy-red;
+@c-headings: 				@c-teal;
+@c-headings-dark:		@c-dark-turquoise;
+@c-body: 						@c-black;
+@c-divider:					@c-davy-mid-grey;
+@c-mstar-red: 			#e4002b;
+@c-white: 					#fff;
+@c-black: 					#000;
+// ---
+// 3. In use
+@c-primary-dark: 		@c-davy-dark-grey;
+@c-primary: 				@c-body;
+@c-primary-alt: 		@c-davy-dark-grey;
+@c-primary-light: 	@c-davy-light-grey;
+@c-accent: 					@c-teal;
+@c-accent-alt:			@c-body;
+@c-text: 						@c-body;
+@c-text-title: 			@c-teal;
+@c-text-light: 			@c-primary-light;						// footnotes and disclaimers
+@c-link:						@c-accent;
+@c-border:					@c-davy-light-grey; 				// borders and separators
+@c-border-dark:			@c-divider; 								// borders and separators
+@c-bg-table:				lighten(@c-davy-light-grey, 65%);			// panels background, zebra table
+@c-bg-table-alt:		@c-davy-light-grey; 				// zebra table alternative
+@c-bg-alt: 					lighten(@c-davy-light-grey, 65%);
+@c-bg: 							@c-white;
+@c-default-red: 		red;
+@c-default-green: 	green;
+// 4. Print
+@c-table-print-text: @c-text;
+
+
+
+//------------------------------------------------------------------------------------
+// TYPOGRAPHY
+// .eot					IE9 Compact Modes
+// .eot?#iefix	IE6-IE8
+// .woff2				Super Modern Browsers (if available)
+// .woff				Modern Browsers
+// .ttf					Safari, Android, iOS
+// .svg					Legacy iOS, Print service
+// The local(☺︎) is a css hack to divert IE6-8 from downloading fonts it can't use (it can only use fonts in EOT format). Explained: The last src property takes precedence in the CSS cascade, meaning that the CSS will be parsed from bottom to top. The local(☺︎) will make IE skip the src at the bottom, without wasting bandwidth downloading fonts it can't use, and rather go straight to the EOT (defined on the line above) that it will use. The smiley is just to ensure there won't be a local font with that name (character combination).
+// Read more here: http://nicewebtype.com/notes/2009/10/30/how-to-use-css-font-face/
+//------------------------------------------------------------------------------------
+// Calibre <-- this may be removed
+@font-face {
+	font-family: 'Calibre-Regular';
+	src: url('../fonts/Calibre-Regular.eot');
+	src: local('☺'),
+	url('../fonts/Calibre-Regular.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/Calibre-Regular.woff2') format('woff2'),
+	url('../fonts/Calibre-Regular.woff') format('woff'),
+	url('../fonts/Calibre-Regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Calibre-Bold';
+	src: url('../fonts/Calibre-Bold.eot');
+	src: local('☺☺'),
+	url('../fonts/Calibre-Bold.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/Calibre-Bold.woff2') format('woff2'),
+	url('../fonts/Calibre-Bold.woff') format('woff'),
+	url('../fonts/Calibre-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Calibre-Semibold';
+	src: url('../fonts/Calibre-Semibold.eot');
+	src: local('☺-☺'),
+	url('../fonts/Calibre-Semibold.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/Calibre-Semibold.woff2') format('woff2'),
+	url('../fonts/Calibre-Semibold.woff') format('woff'),
+	url('../fonts/Calibre-Semibold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Calibre-Light';
+	src: url('../fonts/Calibre-Light.eot');
+	src: local('☺☺☺'),
+	url('../fonts/Calibre-Light.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/Calibre-Light.woff2') format('woff2'),
+	url('../fonts/Calibre-Light.woff') format('woff'),
+	url('../fonts/Calibre-Light.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Calibre-Thin';
+	src: url('../fonts/Calibre-Thin.eot');
+	src: local('☺-☺-☺'),
+	url('../fonts/Calibre-Thin.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/Calibre-Thin.woff2') format('woff2'),
+	url('../fonts/Calibre-Thin.woff') format('woff'),
+	url('../fonts/Calibre-Thin.ttf') format('truetype');
+}
+// Gotham
+@font-face {
+	font-family: 'Gotham-Book';
+	src: url('../fonts/Gotham-Book.eot');
+	src: local('☺'),
+	url('../fonts/Gotham-Book.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/Gotham-Book.woff2') format('woff2'),
+	url('../fonts/Gotham-Book.woff') format('woff'),
+	url('../fonts/Gotham-Book.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Gotham-Bold';
+	src: url('../fonts/Gotham-Bold.eot');
+	src: local('☺☺'),
+	url('../fonts/Gotham-Bold.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/Gotham-Bold.woff2') format('woff2'),
+	url('../fonts/Gotham-Bold.woff') format('woff'),
+	url('../fonts/Gotham-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Gotham-Black';
+	src: url('../fonts/Gotham-Black.eot');
+	src: local('☺-☺'),
+	url('../fonts/Gotham-Black.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/Gotham-Black.woff2') format('woff2'),
+	url('../fonts/Gotham-Black.woff') format('woff'),
+	url('../fonts/Gotham-Black.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Gotham-Light';
+	src: url('../fonts/Gotham-Light.eot');
+	src: local('☺☺☺'),
+	url('../fonts/Gotham-Light.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/Gotham-Light.woff2') format('woff2'),
+	url('../fonts/Gotham-Light.woff') format('woff'),
+	url('../fonts/Gotham-Light.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Gotham-Medium';
+	src: url('../fonts/Gotham-Medium.eot');
+	src: local('☺-☺-☺'),
+	url('../fonts/Gotham-Medium.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/Gotham-Medium.woff2') format('woff2'),
+	url('../fonts/Gotham-Medium.woff') format('woff'),
+	url('../fonts/Gotham-Medium.ttf') format('truetype');
+}
+// Font Awesome, for some icons
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css);
+
+@f-fallback: 				~"Arial, Helvetica, -apple-system, sans-serif";
+@f-cr: 							~"'Calibre-Regular'";
+@f-cb: 							~"'Calibre-Bold'";
+@f-csb: 						~"'Calibre-Semibold'";
+@f-cl: 							~"'Calibre-Light'";
+@f-ct: 							~"'Calibre-Thin'";
+@f-gbk: 						~"'Gotham-Book'";
+@f-gb: 							~"'Gotham-Bold'";
+@f-gm: 							~"'Gotham-Medium'";
+@f-gl: 							~"'Gotham-Light'";
+@f-gbl: 						~"'Gotham-Black'";
+@f-fa: 							~"'FontAwesome'" @i;
+@f-default: 				~"@{f-gl}, @{f-fallback}";
+@f-default-medium:	@f-gm;
+@f-default-bold: 		@f-gm;
+@f-default-bolder: 	@f-gbl;
+@f-default-light: 	@f-gl;
+@f-default-regular: @f-gm;
+// @f-default-lighter: @f-ct;
+.font(@f-family: @f-default, @f-weight: 400, @f-lineheight: @baseline, @f-style: ~"normal") {
+	font-family: 		@f-family;
+	font-weight: 		@f-weight;
+	font-style: 		@f-style;
+	line-height: 		@f-lineheight;
+}
+
+
+
+//------------------------------------------------------------------------------------
+// TYPOGRAPHY MIXINS
+@basefont: 				16px;
+@basefont-print: 	10pt;
+@baseline: 				1.33;
+// responsive font-size experiment
+// calc(2rem + 1vw)
+
+
+
+//------------------------------------------------------------------------------------
+
+// Background Imagery
+.fund-bg() {
+	&.nippongrowthucits {
+		background: #e72a2c url(../img/nippongrowthucits.svg) no-repeat top left;
+		background-size: cover;
+	}
+	// ^ more header styles to come
+}
+
+
+//------------------------------------------------------------------------------------
+// HELPERS
+//------------------------------------------------------------------------------------
+@tea:  			#7EA;
+@coffee:  	#C0FFEE;
+// ^ interestingly, they're both 'watery' colours
+
+// SELF-AWARENESS
+@whoami: 		#BADA55;

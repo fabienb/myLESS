@@ -1,0 +1,56 @@
+ul.ksys-social
+	li.ksys-button__share.ksys-button__share--facebook
+		a(href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(document.location) + '?t=' + encodeURIComponent(document.title),'_blank')")
+			| Facebook
+	//- li.ksys-button__share.ksys-button__share--googleplus
+	//- 	a(href="javascript:window.open('https://plusone.google.com/_/+1/confirm?hl=en&url=' + encodeURIComponent(document.location),'_blank')")
+	//- 		| Google +1
+	li.ksys-button__share.ksys-button__share--googleplus
+		a(href="javascript:window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.location),'_blank')")
+			| Google+ Share
+	li.ksys-button__share.ksys-button__share--twitter
+		a(href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(document.location) + '&text=' + encodeURIComponent(document.title) + '&via=eisturdza&hashtags=eisturdza','_blank')")
+			| Twitter
+	//- optional Twitter username of content author (don’t include “@”)
+	//- optional Hashtags appended onto the tweet (comma separated. don’t include “#”)
+	li.ksys-button__share.ksys-button__share--linkedin
+		a(href="javascript:window.open('http://www.linkedin.com/shareArticle?url=' + encodeURIComponent(document.location) + '&title=' + encodeURIComponent(document.title),'_blank')")
+			| Linkedin
+	//- can add &mini=true
+	li.ksys-button__share.ksys-button__share--reddit
+		a(href="javascript:window.open('http://reddit.com/submit?url=' + encodeURIComponent(document.location) + '&title=' + encodeURIComponent(document.title),'_blank')")
+			| Reddit
+	li.ksys-button__share.ksys-button__share--hackernews
+		a(href="javascript:window.open('http://news.ycombinator.com/submitlink?u=' + encodeURIComponent(document.location) + '&t=' + encodeURIComponent(document.title),'_blank')")
+			| Hacker News
+	li.ksys-button__share.ksys-button__share--buffer
+		a(href="javascript:window.open('http://bufferapp.com/add?text=' + encodeURIComponent(document.title) + '&url=' + encodeURIComponent(document.location),'_blank')")
+			| Buffer
+	li.ksys-button__share.ksys-button__share--digg
+		a(href="javascript:window.open('http://digg.com/submit?url=' + encodeURIComponent(document.location) + '&title=' + encodeURIComponent(document.title),'_blank')")
+			| Digg
+	li.ksys-button__share.ksys-button__share--tumblr
+		a(href="javascript:window.open('http://www.tumblr.com/share/link?url=' + encodeURIComponent(document.location) + '&name=' + encodeURIComponent(document.title),'_blank')")
+			| Tumblr
+	//- can add &description=
+	li.ksys-button__share.ksys-button__share--stumbleupon
+		a(href="javascript:window.open('http://www.stumbleupon.com/submit?url=' + encodeURIComponent(document.location) + '&title=' + encodeURIComponent(document.title),'_blank')")
+			| StumbleUpon
+	li.ksys-button__share.ksys-button__share--delicious
+		a(href="javascript:window.open('https://delicious.com/save?v=5&noui&jump=close&url=' + encodeURIComponent(document.location) + '&title=' + encodeURIComponent(document.title),'_blank')")
+			| Delicious
+	//- can add &provider= // [provider] is the Company who is sharing the url
+	li.ksys-button__share.ksys-button__share--evernote
+		a(href="javascript:window.open('http://www.evernote.com/clip.action?url=' + encodeURIComponent(document.location) + '&title=' + encodeURIComponent(document.title),'_blank')")
+			| Evernote
+	li.ksys-button__share.ksys-button__share--wordpress
+		a(href="javascript:window.open('http://wordpress.com/press-this.php?u=' + encodeURIComponent(document.location) + '&t=' + encodeURIComponent(document.title),'_blank')")
+			| Wordpress
+	//- can add &s=[post-desc]&i=[post-img]
+	li.ksys-button__share.ksys-button__share--pocket
+		a(href="javascript:window.open('https://getpocket.com/save?url=' + encodeURIComponent(document.location) + '&title=' + encodeURIComponent(document.title),'_blank')")
+			| Pocket
+	li.ksys-button__share.ksys-button__share--pinterest
+		a(href="javascript:window.open('https://pinterest.com/pin/create/bookmarklet/?url=' + encodeURIComponent(document.location) + '&description=' + encodeURIComponent(document.title),'_blank')")
+			| Pinterest
+	//- can add &media=[post-img] &is_video=[is_video] If the content is a video or not
